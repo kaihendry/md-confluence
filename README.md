@@ -1,5 +1,8 @@
 ![AUTOMATION NOTICE](image.png)
 
+
+![Code examples](image-1.png)
+
 Related video: https://youtu.be/-JYi5oOVpZQ?si=HfG2_ORmXYMgsTVJ
 
 ## Learnings from markdown-confluence-sync-action
