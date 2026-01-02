@@ -17,14 +17,10 @@ Testing [Telefonica/markdown-confluence-sync-action](https://github.com/Telefoni
 - **Markdown tables** - Converted properly
 - **Local images** - PNG, JPEG, SVG files committed to the repo work
 - **Inline code** - Renders with monospace font
+- **Code blocks with syntax highlighting** - Enable `rehype.codeBlocks: true` in workflow config
+  - Uses Confluence code macro with language-specific highlighting
 - **Frontmatter metadata** - `title` and `sync_to_confluence` fields work as expected
 - **Tree mode** - Folder hierarchy mirrors to Confluence page hierarchy
-
-### ⚠️ Requires Configuration
-
-- **Code blocks with syntax highlighting** - Need `rehype.codeBlocks: true` in workflow config
-  - Without it: renders as plain preformatted text (no highlighting)
-  - With it: uses Confluence code macro with language-specific highlighting
 
 ### ❌ What Doesn't Work
 
