@@ -16,7 +16,7 @@ jobs:
               # https://github.com/Telefonica/markdown-confluence-sync-action?tab=readme-ov-file#inputs
               with:
                   # Confluence configuration
-                  confluence-url: https://zennor.atlassian.net/
+                  confluence-url: https://zennor.atlassian.net/wiki/
                   confluence-space-key: ~557058c64a9e95445742e185ecfe0af607e6ad
                   confluence-root-page-id: "65876"
                   confluence-authentication: |
