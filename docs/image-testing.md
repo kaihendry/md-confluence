@@ -39,11 +39,23 @@ Testing different markdown image approaches:
 
 ## PNG Images
 
-To test PNG support, add a PNG file to the `images/` folder and reference it:
+### Blue PNG Test
 
-```markdown
-![My PNG Image](images/example.png)
-```
+![Test PNG](images/test-image.png)
+
+### Red Square PNG
+
+![Red Square](images/red-square.png)
+
+## JPEG Images
+
+### Green JPEG Test
+
+![Test JPEG](images/test-image.jpg)
+
+### Gradient Banner JPEG
+
+![Gradient Banner](images/gradient-banner.jpg)
 
 ## Expected Results
 
