@@ -12,9 +12,16 @@ Testing [Telefonica/markdown-confluence-sync-action](https://github.com/Telefoni
   - Flowcharts, sequence diagrams, pie charts, state diagrams, Gantt charts all work
   - Emoji in diagrams render correctly
 - **Markdown tables** - Converted properly
-- **Code blocks** - Syntax highlighting preserved (with `rehype.codeBlocks: true`)
+- **Local images** - PNG, JPEG, SVG files committed to the repo work
+- **Inline code** - Renders with monospace font
 - **Frontmatter metadata** - `title` and `sync_to_confluence` fields work as expected
 - **Tree mode** - Folder hierarchy mirrors to Confluence page hierarchy
+
+### ⚠️ Requires Configuration
+
+- **Code blocks with syntax highlighting** - Need `rehype.codeBlocks: true` in workflow config
+  - Without it: renders as plain preformatted text (no highlighting)
+  - With it: uses Confluence code macro with language-specific highlighting
 
 ### ❌ What Doesn't Work
 

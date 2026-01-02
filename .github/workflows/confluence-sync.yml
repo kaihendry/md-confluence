@@ -30,3 +30,9 @@ jobs:
 
                   # Source directory containing markdown files
                   docs-dir: "./docs"
+
+                  # Enable Confluence code macro for syntax highlighting
+                  rehype: |
+                      {
+                          "codeBlocks": true
+                      }
