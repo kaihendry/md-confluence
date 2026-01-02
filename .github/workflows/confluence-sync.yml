@@ -2,10 +2,6 @@ name: Sync to Confluence
 
 on:
     push:
-        branches:
-            - main
-        paths:
-            - "docs/**"
     workflow_dispatch:
 
 jobs:
