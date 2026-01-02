@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200">
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90D9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#357ABD;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2ECC71;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#27AE60;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Client Box -->
+  <rect x="20" y="20" width="100" height="60" rx="8" fill="url(#blueGrad)" />
+  <text x="70" y="55" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">Client</text>
+  
+  <!-- Server Box -->
+  <rect x="150" y="20" width="100" height="60" rx="8" fill="url(#blueGrad)" />
+  <text x="200" y="55" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">Server</text>
+  
+  <!-- Database Box -->
+  <rect x="280" y="20" width="100" height="60" rx="8" fill="url(#greenGrad)" />
+  <text x="330" y="55" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">Database</text>
+  
+  <!-- Arrows -->
+  <path d="M120 50 L150 50" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
+  <path d="M250 50 L280 50" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
+  
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+    </marker>
+  </defs>
+  
+  <!-- Labels -->
+  <text x="135" y="40" text-anchor="middle" fill="#666" font-family="Arial" font-size="10">API</text>
+  <text x="265" y="40" text-anchor="middle" fill="#666" font-family="Arial" font-size="10">SQL</text>
+  
+  <!-- Footer -->
+  <text x="200" y="120" text-anchor="middle" fill="#333" font-family="Arial" font-size="16" font-weight="bold">Simple Architecture Overview</text>
+  <text x="200" y="145" text-anchor="middle" fill="#666" font-family="Arial" font-size="11">Client → Server → Database</text>
+</svg>
