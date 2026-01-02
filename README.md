@@ -24,6 +24,5 @@ Testing [Telefonica/markdown-confluence-sync-action](https://github.com/Telefoni
 
 ### 💡 Tips
 
-- Pin to `@v2` instead of `@main` for better caching
 - Use path filters to only run when `docs/**` changes
 - The action uses Docker, so expect ~1 min build time on first run
