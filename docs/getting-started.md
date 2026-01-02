@@ -19,6 +19,16 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor i
 
 Nulla facilisi nullam vehicula ipsum a arcu cursus vitae. Amet consectetur adipiscing elit pellentesque habitant morbi tristique senectus. Viverra accumsan in nisl nisi scelerisque eu ultrices vitae auctor.
 
+```mermaid
+flowchart LR
+    A[📦 Setup] --> B[⚙️ Configure]
+    B --> C[🚀 Run]
+    C --> D{Working?}
+    D -->|Yes| E[✅ Success!]
+    D -->|No| F[🔧 Troubleshoot]
+    F --> B
+```
+
 ### Step 1: Setup
 
 Eget nulla facilisi etiam dignissim diam quis enim lobortis. Nunc sed blandit libero volutpat sed cras ornare arcu.

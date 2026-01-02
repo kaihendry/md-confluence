@@ -11,6 +11,16 @@ Learn how to configure the application for your specific needs.
 
 The main configuration file is located at `config.yaml`. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
+```mermaid
+pie showData
+    title Configuration Categories
+    "Server Settings" : 30
+    "Database Settings" : 25
+    "Logging Settings" : 20
+    "Security Settings" : 15
+    "Feature Flags" : 10
+```
+
 ```yaml
 # Example configuration
 server:
@@ -90,6 +100,20 @@ security:
 ## Validation
 
 To validate your configuration:
+
+```mermaid
+stateDiagram-v2
+    [*] --> Loading: Load config file
+    Loading --> Parsing: File found
+    Loading --> Error: File not found
+    Parsing --> Validating: Parse successful
+    Parsing --> Error: Parse failed
+    Validating --> Valid: All checks pass
+    Validating --> Invalid: Validation errors
+    Valid --> [*]
+    Invalid --> Error
+    Error --> [*]
+```
 
 ```bash
 example-cli config validate
