@@ -5,122 +5,104 @@ sync_to_confluence: true
 
 # AWS Architecture Diagram with Mermaid
 
-This page demonstrates the AWS icons available in Mermaid architecture diagrams via [iconify](https://icon-sets.iconify.design/?query=aws).
+This page demonstrates AWS architecture diagrams using Mermaid flowcharts.
 
 ## Example Architecture
 
 ```mermaid
-architecture-beta
-    group vpc(logos:aws-vpc)[VPC]
-    group compute(logos:aws-ec2)[Compute Layer] in vpc
-    group data(logos:aws-rds)[Data Layer] in vpc
+flowchart LR
+    subgraph Internet
+        Route53[🌐 Route 53]
+        CloudFront[☁️ CloudFront]
+    end
 
-    service alb(logos:aws-elastic-load-balancing)[ALB]
-    service ec2a(logos:aws-ec2)[EC2 Instance] in compute
-    service ec2b(logos:aws-ec2)[EC2 Instance] in compute
-    service lambda(logos:aws-lambda)[Lambda] in compute
-    service rds(logos:aws-rds)[RDS Postgres] in data
-    service dynamodb(logos:aws-dynamodb)[DynamoDB] in data
-    service s3(logos:aws-s3)[S3 Bucket]
-    service cloudfront(logos:aws-cloudfront)[CloudFront]
-    service route53(logos:aws-route-53)[Route 53]
+    subgraph VPC[VPC]
+        subgraph Compute[Compute Layer]
+            ALB[⚖️ ALB]
+            EC2a[💻 EC2 Instance A]
+            EC2b[💻 EC2 Instance B]
+            Lambda[λ Lambda]
+        end
+        subgraph Data[Data Layer]
+            RDS[(🗄️ RDS Postgres)]
+            DynamoDB[(📊 DynamoDB)]
+        end
+    end
 
-    route53:R --> L:cloudfront
-    cloudfront:R --> L:alb
-    alb:R --> L:ec2a
-    alb:R --> L:ec2b
-    ec2a:B --> T:rds
-    ec2b:B --> T:dynamodb
-    lambda:B --> T:s3
+    S3[📦 S3 Bucket]
+
+    Route53 --> CloudFront
+    CloudFront --> ALB
+    ALB --> EC2a
+    ALB --> EC2b
+    EC2a --> RDS
+    EC2b --> DynamoDB
+    Lambda --> S3
 ```
 
-## Available AWS Icons (logos: prefix)
+## AWS Icons Reference
 
-Here are the AWS icons available via iconify's `logos:` prefix:
+The following AWS service icons are available locally in `images/`:
 
-| Icon Code | Service |
-|-----------|---------|
-| `logos:aws` | AWS Logo |
-| `logos:aws-api-gateway` | API Gateway |
-| `logos:aws-aurora` | Aurora |
-| `logos:aws-cloudformation` | CloudFormation |
-| `logos:aws-cloudfront` | CloudFront |
-| `logos:aws-cloudwatch` | CloudWatch |
-| `logos:aws-codedeploy` | CodeDeploy |
-| `logos:aws-cognito` | Cognito |
-| `logos:aws-dynamodb` | DynamoDB |
-| `logos:aws-ec2` | EC2 |
-| `logos:aws-ecs` | ECS |
-| `logos:aws-eks` | EKS |
-| `logos:aws-elastic-cache` | ElastiCache |
-| `logos:aws-elastic-load-balancing` | ELB |
-| `logos:aws-elasticbeanstalk` | Elastic Beanstalk |
-| `logos:aws-fargate` | Fargate |
-| `logos:aws-glacier` | Glacier |
-| `logos:aws-iam` | IAM |
-| `logos:aws-kinesis` | Kinesis |
-| `logos:aws-kms` | KMS |
-| `logos:aws-lambda` | Lambda |
-| `logos:aws-mq` | MQ |
-| `logos:aws-opensearch` | OpenSearch |
-| `logos:aws-rds` | RDS |
-| `logos:aws-redshift` | Redshift |
-| `logos:aws-route-53` | Route 53 |
-| `logos:aws-s3` | S3 |
-| `logos:aws-ses` | SES |
-| `logos:aws-sns` | SNS |
-| `logos:aws-sqs` | SQS |
-| `logos:aws-step-functions` | Step Functions |
-| `logos:aws-vpc` | VPC |
+| Icon | Service | File |
+|------|---------|------|
+| ![Lambda](images/aws-lambda.svg) | AWS Lambda | `aws-lambda.svg` |
+| ![EC2](images/aws-ec2.svg) | Amazon EC2 | `aws-ec2.svg` |
+| ![RDS](images/aws-rds.svg) | Amazon RDS | `aws-rds.svg` |
+| ![DynamoDB](images/aws-dynamodb.svg) | Amazon DynamoDB | `aws-dynamodb.svg` |
+| ![S3](images/aws-s3.svg) | Amazon S3 | `aws-s3.svg` |
+| ![CloudFront](images/aws-cloudfront.svg) | Amazon CloudFront | `aws-cloudfront.svg` |
+| ![Route 53](images/aws-route53.svg) | Amazon Route 53 | `aws-route53.svg` |
+| ![VPC](images/aws-vpc.svg) | Amazon VPC | `aws-vpc.svg` |
+| ![API Gateway](images/aws-api-gateway.svg) | Amazon API Gateway | `aws-api-gateway.svg` |
+| ![Cognito](images/aws-cognito.svg) | Amazon Cognito | `aws-cognito.svg` |
+| ![SQS](images/aws-sqs.svg) | Amazon SQS | `aws-sqs.svg` |
+| ![SNS](images/aws-sns.svg) | Amazon SNS | `aws-sns.svg` |
 
 ## Serverless Example
 
 ```mermaid
-architecture-beta
-    group serverless(logos:aws-lambda)[Serverless Stack]
+flowchart LR
+    subgraph Serverless[Serverless Stack]
+        AuthFn[λ Auth Function]
+        ApiFn[λ API Function]
+        Cognito[🔐 Cognito]
+    end
 
-    service apigw(logos:aws-api-gateway)[API Gateway]
-    service fn1(logos:aws-lambda)[Auth Function] in serverless
-    service fn2(logos:aws-lambda)[API Function] in serverless
-    service cognito(logos:aws-cognito)[Cognito] in serverless
-    service dynamo(logos:aws-dynamodb)[DynamoDB]
-    service sqs(logos:aws-sqs)[SQS Queue]
-    service sns(logos:aws-sns)[SNS Topic]
+    APIGW[🚪 API Gateway]
+    DynamoDB[(📊 DynamoDB)]
+    SQS[📬 SQS Queue]
+    SNS[📢 SNS Topic]
 
-    apigw:R --> L:fn1
-    fn1:R --> L:cognito
-    fn1:B --> T:fn2
-    fn2:R --> L:dynamo
-    fn2:B --> T:sqs
-    sqs:R --> L:sns
+    APIGW --> AuthFn
+    AuthFn --> Cognito
+    AuthFn --> ApiFn
+    ApiFn --> DynamoDB
+    ApiFn --> SQS
+    SQS --> SNS
 ```
 
 ## Data Pipeline Example
 
 ```mermaid
-architecture-beta
-    group ingest(cloud)[Ingestion]
-    group process(cloud)[Processing]
-    group store(cloud)[Storage]
+flowchart LR
+    subgraph Ingest[Ingestion]
+        Kinesis[📥 Kinesis]
+    end
 
-    service kinesis(logos:aws-kinesis)[Kinesis] in ingest
-    service lambda(logos:aws-lambda)[Transform] in process
-    service glue(logos:aws-cloudformation)[Glue ETL] in process
-    service s3raw(logos:aws-s3)[Raw Data] in store
-    service s3proc(logos:aws-s3)[Processed] in store
-    service redshift(logos:aws-redshift)[Redshift] in store
+    subgraph Process[Processing]
+        Lambda[λ Transform]
+    end
 
-    kinesis:R --> L:lambda
-    lambda:R --> L:s3raw
-    s3raw:B --> T:glue
-    glue:R --> L:s3proc
-    s3proc:B --> T:redshift
+    subgraph Store[Storage]
+        S3[(📦 S3)]
+        Redshift[(📊 Redshift)]
+    end
+
+    Kinesis --> Lambda
+    Lambda --> S3
+    S3 --> Redshift
 ```
-
-## Limitations
-
-⚠️ **Not all AWS services have icons** in the iconify `logos:` collection. Missing services include:
-- Transfer Family
 - GuardDuty
 - Security Hub
 - EventBridge
