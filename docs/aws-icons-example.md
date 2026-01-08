@@ -3,49 +3,48 @@ title: AWS Icons in Mermaid
 sync_to_confluence: true
 ---
 
-# AWS Architecture Diagram with Mermaid
+# AWS Architecture Diagrams
 
-This page demonstrates AWS architecture diagrams using Mermaid flowcharts.
+This page demonstrates AWS architecture diagrams with actual AWS icons.
 
-## Example Architecture
+## Architecture Overview
 
-```mermaid
-flowchart LR
-    subgraph Internet
-        Route53[🌐 Route 53]
-        CloudFront[☁️ CloudFront]
-    end
+| Component | Icon | Description |
+|-----------|------|-------------|
+| Route 53 | ![Route 53](images/aws-route53.svg) | DNS service |
+| CloudFront | ![CloudFront](images/aws-cloudfront.svg) | CDN distribution |
+| VPC | ![VPC](images/aws-vpc.svg) | Virtual private cloud |
+| EC2 | ![EC2](images/aws-ec2.svg) | Compute instances |
+| Lambda | ![Lambda](images/aws-lambda.svg) | Serverless functions |
+| RDS | ![RDS](images/aws-rds.svg) | Relational database |
+| DynamoDB | ![DynamoDB](images/aws-dynamodb.svg) | NoSQL database |
+| S3 | ![S3](images/aws-s3.svg) | Object storage |
 
-    subgraph VPC[VPC]
-        subgraph Compute[Compute Layer]
-            ALB[⚖️ ALB]
-            EC2a[💻 EC2 Instance A]
-            EC2b[💻 EC2 Instance B]
-            Lambda[λ Lambda]
-        end
-        subgraph Data[Data Layer]
-            RDS[(🗄️ RDS Postgres)]
-            DynamoDB[(📊 DynamoDB)]
-        end
-    end
+## Data Flow
 
-    S3[📦 S3 Bucket]
-
-    Route53 --> CloudFront
-    CloudFront --> ALB
-    ALB --> EC2a
-    ALB --> EC2b
-    EC2a --> RDS
-    EC2b --> DynamoDB
-    Lambda --> S3
 ```
+Route 53 → CloudFront → ALB → EC2 Instances → RDS/DynamoDB
+                              ↓
+                           Lambda → S3
+```
+
+## Serverless Architecture
+
+| Component | Icon | Role |
+|-----------|------|------|
+| API Gateway | ![API Gateway](images/aws-api-gateway.svg) | API endpoint |
+| Lambda | ![Lambda](images/aws-lambda.svg) | Business logic |
+| Cognito | ![Cognito](images/aws-cognito.svg) | Authentication |
+| DynamoDB | ![DynamoDB](images/aws-dynamodb.svg) | Data persistence |
+| SQS | ![SQS](images/aws-sqs.svg) | Message queuing |
+| SNS | ![SNS](images/aws-sns.svg) | Notifications |
 
 ## AWS Icons Reference
 
-The following AWS service icons are available locally in `images/`:
+All icons are stored in `images/` directory:
 
-| Icon | Service | File |
-|------|---------|------|
+| Icon | Service | Filename |
+|------|---------|----------|
 | ![Lambda](images/aws-lambda.svg) | AWS Lambda | `aws-lambda.svg` |
 | ![EC2](images/aws-ec2.svg) | Amazon EC2 | `aws-ec2.svg` |
 | ![RDS](images/aws-rds.svg) | Amazon RDS | `aws-rds.svg` |
@@ -59,55 +58,8 @@ The following AWS service icons are available locally in `images/`:
 | ![SQS](images/aws-sqs.svg) | Amazon SQS | `aws-sqs.svg` |
 | ![SNS](images/aws-sns.svg) | Amazon SNS | `aws-sns.svg` |
 
-## Serverless Example
+## Tips
 
-```mermaid
-flowchart LR
-    subgraph Serverless[Serverless Stack]
-        AuthFn[λ Auth Function]
-        ApiFn[λ API Function]
-        Cognito[🔐 Cognito]
-    end
-
-    APIGW[🚪 API Gateway]
-    DynamoDB[(📊 DynamoDB)]
-    SQS[📬 SQS Queue]
-    SNS[📢 SNS Topic]
-
-    APIGW --> AuthFn
-    AuthFn --> Cognito
-    AuthFn --> ApiFn
-    ApiFn --> DynamoDB
-    ApiFn --> SQS
-    SQS --> SNS
-```
-
-## Data Pipeline Example
-
-```mermaid
-flowchart LR
-    subgraph Ingest[Ingestion]
-        Kinesis[📥 Kinesis]
-    end
-
-    subgraph Process[Processing]
-        Lambda[λ Transform]
-    end
-
-    subgraph Store[Storage]
-        S3[(📦 S3)]
-        Redshift[(📊 Redshift)]
-    end
-
-    Kinesis --> Lambda
-    Lambda --> S3
-    S3 --> Redshift
-```
-- GuardDuty
-- Security Hub
-- EventBridge
-- AppSync
-- Amplify
-- And many others...
-
-For comprehensive AWS diagrams, consider using [draw.io with AWS4 library](https://app.diagrams.net/?splash=0&libs=aws4) and exporting as SVG.
+For comprehensive AWS architecture diagrams with full icon support, consider:
+- [Draw.io with AWS4 library](https://app.diagrams.net/?splash=0&libs=aws4) - Export as SVG/PNG
+- [AWS Architecture Icons](https://aws.amazon.com/architecture/icons/) - Official icon set
