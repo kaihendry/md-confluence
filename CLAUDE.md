@@ -8,6 +8,8 @@ Test action:
 
 * https://github.com/Telefonica/markdown-confluence-sync-action
 
+AWS icons: https://aws.amazon.com/architecture/icons/
+
 # Side quest
 
 If Confluence content is updated, will the markdown overwrite it?
